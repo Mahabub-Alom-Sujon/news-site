@@ -26,8 +26,7 @@ body {
   list-style-type: none;
   margin-right: 10px;
 }
-.top-header-social li  i
-{
+.top-header-social li  i{
   display: inline-block;
   height: 30px;
   width: 30px;
@@ -38,12 +37,16 @@ body {
   border-radius: 50px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  line-height: 25px
+
 }
 
 .top-header-others{
   padding-left: 0;
   margin-bottom: 0;
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+
 }
 .top-header-others li{
   list-style-type: none;
@@ -53,6 +56,7 @@ body {
   position: relative;
   padding-left: 20px;
   margin-right: 12px;
+
 }
 .top-header-others li i{
   position: absolute;
@@ -71,19 +75,26 @@ body {
 }
 .main-navbar{
   background-color: #f6f6f6;
+  padding: 16px 0px;
 }
-.main-navbar nav a img{
-  width: 135px;
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
-.navbar .navbar-nav .nav-item a.active{
-  color: #ffffff !important;
-  background-color: #ff661f;
+
+
+.navbar .navbar-nav .nav-item:hover{
+  border-bottom:2px solid  #ff661f;
+  
 }
 .main-navbar .navbar .navbar-nav .nav-item a{
   color: #09101f;
   font-size: 16px;
   font-weight: 500;
-  padding: 30px 10px;
+  padding: 0px 10px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }

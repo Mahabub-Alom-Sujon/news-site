@@ -28,16 +28,16 @@ const EmailVerifyForm = () => {
           let ResJSON=await res.json();
           if(ResJSON.status==="success"){
               // Temporary Session
-              sessionStorage.setItem("email",data?.email);
-
+              sessionStorage.setItem("email",data.email);
               router.push("/user/otpVerify")
               toast.success("Request Success");
 
           }
           else {
+                setSubmit(false)
               toast.error("Invalid Email Address!")
           }
-          setSubmit(false)
+          
       }
     }
 

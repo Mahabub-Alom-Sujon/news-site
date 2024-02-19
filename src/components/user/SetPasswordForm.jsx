@@ -35,16 +35,14 @@ const SetPasswordForm = () => {
 
           let res=await fetch("/api/user/resetPassword",options);
           let ResJson=await res.json();
-
-          setSubmit(false);
-
           if(ResJson['status']==="success"){
               SuccessToast("Request Success");
               sessionStorage.clear();
               router.push("/user/login")
           }
           else{
-              ErrorToast("Request Fail")
+                setSubmit(false);
+                ErrorToast("Request Fail")
           }
       }
     }

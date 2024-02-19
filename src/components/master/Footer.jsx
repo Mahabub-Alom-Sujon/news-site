@@ -57,8 +57,8 @@ const Footer = (props) => {
                         <div className='col-lg-3 col-md-6'>
                         <h5 className="text-white fw-bold my-3"> LEGAL </h5>
                             <ul className="list-unstyled text-white">
-                                <li className="my-1"><Link href="" className="nav-link" >Privacy Policy</Link></li>
-                                <li className="my-1"><Link href=""  className="nav-link">Terms & Conditions</Link></li>
+                                <li className="my-1"><Link href="/policy" className="nav-link" >Privacy Policy</Link></li>
+                                <li className="my-1"><Link href="/terms"  className="nav-link">Terms & Conditions</Link></li>
                             </ul>
                         </div>
                         <div className='col-lg-3 col-md-6'>

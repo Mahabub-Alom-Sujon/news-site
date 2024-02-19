@@ -37,14 +37,14 @@ const LoginForm = () => {
           let res=await fetch("/api/user/login",options);
           let ResJson=await res.json();
 
-          setSubmit(false);
-
-          if(ResJson['status']==="success"){
-              SuccessToast("Login Success")
-              router.push("/")
+          if (ResJson['status'] === "success") {
+                setData({email:"",password:""}) 
+                SuccessToast("Login Success")
+                window.location.href = '/'; 
           }
-          else{
-              ErrorToast("Request Fail")
+          else {
+                setSubmit(false);
+                ErrorToast("Request Fail")
           }
 
       }

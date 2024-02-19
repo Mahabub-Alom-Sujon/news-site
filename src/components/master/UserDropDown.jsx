@@ -1,8 +1,10 @@
+"use client"
 import Link from "next/link";
 import Cookies from 'js-cookie';
 const UserDropDown = () => {
     const handleLogout = () => {
         Cookies.remove('token');
+        window.location.href = '/'
     }
 
     return (
@@ -17,10 +19,14 @@ const UserDropDown = () => {
                         <Link href="/profile" className="side-bar-item">
                             <span className="side-bar-item-caption">Profile</span>
                         </Link>
-                        <Link href="/user/login" className="side-bar-item" onClick={handleLogout}>
+                        <Link href="/comments" className="side-bar-item">
+                            <span className="side-bar-item-caption">Comments</span>
+                        </Link>
+                        <Link href="/" className="side-bar-item" onClick={handleLogout}>
                             <span className="side-bar-item-caption">Logout</span>
                         </Link>
                     </div>
+            
                 </div>
             </div>
 

@@ -12,7 +12,7 @@ const CommentsList = (props) => {
                     <ul className="list-group bg-transparent list-group-flush">
                         {
                            props.data.map((item,i)=>{
-                               return  <li className="list-group-item bg-transparent">
+                               return  <li key={i} className="list-group-item bg-transparent">
                                    <h6 className="text-dark">
                                        <i className="bi bi-person-circle"></i> {item['users']['firstName']}
                                    </h6>

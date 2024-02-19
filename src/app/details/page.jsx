@@ -4,8 +4,9 @@ import NewsDetails from "@/components/news/NewsDetails";
 import PopularList from "@/components/news/PopularList";
 async function getData(id){
     let Details= (await (await fetch(`${process.env.HOST}/api/news/details?id=${id}`)).json())['data']
+
     let Popular= (await (await fetch(`${process.env.HOST}/api/news/type?type=Popular`)).json())['data']
-    let Comments= (await (await fetch(`${process.env.HOST}/api/comments/news?postID=${id}`)).json())['data']
+    let Comments= (await (await fetch(`${process.env.HOST}/api/comments/news?postID=${id}`,{cache:"no-cache"})).json())['data']
 
     return {Details:Details,Popular:Popular,Comments:Comments}
 }

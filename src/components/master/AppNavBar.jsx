@@ -9,10 +9,28 @@ import { AiFillYoutube } from "react-icons/ai";
 import { LuUser } from "react-icons/lu";
 import { IoIosSearch } from "react-icons/io";
 import UserDropDown from "@/components/master/UserDropDown";
+import Image from 'next/image';
 
 const AppNavBar = (props) => {
     let [searchKey,SetSearchKey]=useState("0");
     let [login,SetLogin]=useState(false);
+    const [isSticky, setIsSticky] = useState(false);
+    useEffect(() => {
+        const handleScroll = () => {
+          const offset = window.scrollY;
+          if (offset > 100) {
+            setIsSticky(true);
+          } else {
+            setIsSticky(false);
+          }
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+    
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
 
     useEffect(() => {
         if(Cookies.get('token')){
@@ -24,7 +42,7 @@ const AppNavBar = (props) => {
     }, []);
     return (
         <>
-            <div className='top-header-area'>
+            <div className='top-header-area '>
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-6">
@@ -72,11 +90,20 @@ const AppNavBar = (props) => {
                     </div>
                 </div>
             </div>
-            <div className='main-navbar'>
+            <div className={`${'main-navbar'} ${isSticky ? "sticky" : ''}`}>
                 <nav className="navbar navbar-expand-lg p-0">
                     <div className="container">
                         <Link className="navbar-brand" href="/">
-                            <img src='/images/logo-1.png'/>
+                            {/*<img src='/images/logo-1.png' />*/}
+                            <Image
+                                src="/images/logo-1.png"
+                                alt='logo'
+                                width={142}
+                                height={32}
+                                layout='responsive'
+                                priority
+                            
+                            />
                         </Link>
 
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,13 +112,14 @@ const AppNavBar = (props) => {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link f-13 active" aria-current="page" href="/">Home</Link>
+                                <Link className="nav-link f-13" aria-current="page" href="/">Home</Link>
                             </li>
                             {
                                 props.data['categories'].map((Item,i)=>{
                                     return (
-                                        <li className='nav-item'>
-                                            <Link key={i} className="nav-link f-13"  href={"/category?id="+Item['id']} >{Item['name']}</Link>
+
+                                        <li key={i} className='nav-item'>
+                                            <Link className="nav-link f-13"   href={"/category?id="+Item['id']} >{Item['name']}</Link>
                                         </li>
                                     )
                                 })
